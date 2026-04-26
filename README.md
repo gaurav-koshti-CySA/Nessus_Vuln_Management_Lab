@@ -27,7 +27,8 @@ Both VMs were connected via a VirtualBox NAT Network (`LabNetwork — 10.0.2.0/2
 
 Nessus Essentials was installed on the Windows Server VM. After installation, the scanner took approximately 45 minutes to download and compile over 85,000 plugins on first run. The service was configured to start automatically and was accessible via `https://localhost:8834`.
 
-![Nessus Dashboard](screenshots/11_nessus_plugins_done_compiling.png)
+![Nessus Initializing](screenshots/Screenshot%202026-04-25%20150624.png)
+![Plugins Done Compiling](screenshots/Screenshot%202026-04-25%20170834.png)
 
 ---
 
@@ -45,7 +46,7 @@ Before running any credentialed scans, the Windows 11 endpoint required several 
 
 All configuration commands are documented in [`scripts/network_config_commands.md`](scripts/network_config_commands.md).
 
-![Admin Shares Verified](screenshots/09_win11_admin_shares_verified.png)
+![Admin Shares Verified](screenshots/Screenshot%202026-04-25%20182833.png)
 
 ---
 
@@ -58,7 +59,7 @@ All configuration commands are documented in [`scripts/network_config_commands.m
 
 Both installers were staged in `C:\VulnLab\` on the endpoint before scanning began.
 
-![VulnLab Folder](screenshots/08_vulnlab_all_installers.png)
+![VulnLab Installers](screenshots/Screenshot%202026-04-25%20200223.png)
 
 ---
 
@@ -73,7 +74,7 @@ Both installers were staged in `C:\VulnLab\` on the endpoint before scanning beg
 | Scan 5 | Full remediation | 8.9.3 | 3.0.23 | Removed |
 | Uncredentialed | Comparison scan — no credentials | 8.9.3 | 3.0.23 | Removed |
 
-![All Scans Overview](screenshots/32_all_scans_overview.png)
+![All Scans Overview](screenshots/Screenshot%202026-04-25%20222641.png)
 
 ---
 
@@ -87,7 +88,10 @@ Key findings:
 - **HIGH (CVSS 8.8)** — WinVerifyTrust Signature Validation CVE-2013-3900
 - **HIGH (CVSS 8.1)** — Microsoft Outlook missing security update KB5002574
 
-![Baseline Results](screenshots/14_scan1_baseline_results.png)
+![Baseline Results](screenshots/Screenshot%202026-04-25%20191452.png)
+![Baseline High Vulns](screenshots/Screenshot%202026-04-25%20191507.png)
+![Baseline Vuln Detail](screenshots/Screenshot%202026-04-25%20191606.png)
+![Baseline Remediations](screenshots/Screenshot%202026-04-25%20191621.png)
 
 ---
 
@@ -103,7 +107,8 @@ Key findings:
 
 Nessus recommended upgrading to version 8.9.2 or later.
 
-![Scan 2 Results](screenshots/19_scan2_npp754_results.png)
+![Scan 2 Results](screenshots/Screenshot%202026-04-25%20194405.png)
+![Scan 2 Remediations](screenshots/Screenshot%202026-04-25%20194411.png)
 
 ---
 
@@ -119,8 +124,9 @@ Key VLC findings:
 
 Nessus recommended upgrading VLC to 3.0.22 or later to address 40 vulnerabilities in a single remediation action.
 
-![Scan 3 VLC Results](screenshots/23_scan3_vlc_vulnerabilities.png)
-![Scan 3 NPP Results](screenshots/24_scan3_npp_vulnerabilities.png)
+![Scan 3 VLC Results](screenshots/Screenshot%202026-04-25%20204552.png)
+![Scan 3 NPP Results](screenshots/Screenshot%202026-04-25%20204615.png)
+![Scan 3 Remediations](screenshots/Screenshot%202026-04-25%20204628.png)
 
 ---
 
@@ -132,7 +138,8 @@ Notepad++ 7.5.4 remained installed, so those High severity findings persisted.
 
 **Note:** Even after uninstalling Microsoft Teams, it continued appearing in the Remediations tab. Teams left behind residual registry keys and WindowsApps metadata that Nessus continued to detect. In an enterprise environment this would typically require Microsoft's official cleanup tool or manual registry remediation. This was documented as a known real-world limitation rather than a failure of the remediation process.
 
-![Scan 4 Results](screenshots/27_scan4_partial_results.png)
+![Scan 4 Results](screenshots/Screenshot%202026-04-25%20211017.png)
+![Scan 4 Remediations](screenshots/Screenshot%202026-04-25%20211116.png)
 
 ---
 
@@ -149,7 +156,8 @@ Microsoft Outlook was also uninstalled to address the remaining Outlook security
 
 The final scan showed 0 Critical and 1 High finding remaining — the residual Teams artifact mentioned above.
 
-![Scan 5 Final Results](screenshots/30_scan5_final_results.png)
+![Scan 5 Final Results](screenshots/Screenshot%202026-04-25%20215923.png)
+![Scan 5 Remediations](screenshots/Screenshot%202026-04-25%20215935.png)
 
 ---
 
@@ -180,7 +188,7 @@ From peak risk (Scan 3) to final state (Scan 5): Critical findings reduced by 10
 
 Without credentials, Nessus missed 60% of findings and had no visibility into installed software versions or patch status. This is why credentialed scanning is the standard in enterprise vulnerability management programs.
 
-![Uncredentialed Scan](screenshots/33_uncredentialed_scan_results.png)
+![Uncredentialed Scan Results](screenshots/Screenshot%202026-04-25%20225802.png)
 
 ---
 
@@ -230,7 +238,7 @@ Re-scanning is the only way to confirm remediation. Assuming a patch worked with
 ```
 Nessus_Vuln_Management_Lab/
 ├── README.md
-├── screenshots/          # All 33 scan screenshots in order
+├── screenshots/          # All scan screenshots
 └── scripts/
     └── network_config_commands.md
 ```
